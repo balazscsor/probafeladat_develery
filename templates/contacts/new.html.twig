@@ -3,9 +3,16 @@
 {% block title %}New Contacts{% endblock %}
 
 {% block body %}
-    <h1>Ask me something!</h1>
+    <h1>Itt tehet fel kérdést</h1>
 
-    {{ include('contacts/_form.html.twig') }}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+    {% if success %}
+        <script>
+            alert('Köszönjük szépen a kérdésedet.\nVálaszunkkal hamarosan keresünk a megado e-mail címen.');
+        </script>
+    {% endif %}
 
-    <a href="{{ path('app_contacts_index') }}">back to list</a>
 {% endblock %}
